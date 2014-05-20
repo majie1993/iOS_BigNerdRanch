@@ -61,6 +61,38 @@
     item.valueInDollars = [self.valueField.text intValue];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    UIImageView *iv = [[UIImageView alloc] initWithImage:nil];
+    
+    iv.contentMode = UIViewContentModeScaleAspectFit;
+    iv.translatesAutoresizingMaskIntoConstraints = NO;
+    self.imageView = iv;
+    [self.view addSubview:iv];
+    
+    [self.imageView setContentHuggingPriority:200 forAxis:UILayoutConstraintAxisVertical];
+    [self.imageView setContentCompressionResistancePriority:700 forAxis:UILayoutConstraintAxisVertical]; 
+    
+    NSDictionary *nameMap = @{@"imageView": self.imageView,
+                              @"toolbar": self.toolbar,
+                              @"dateLabel": self.dateLabel};
+    
+    NSArray *horizontalContraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageView]-0-|"
+                                                                            options:0
+                                                                            metrics:nil
+                                                                              views:nameMap];
+    
+    NSArray *verticalContraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar]"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:nameMap];
+    
+    [self.view addConstraints:horizontalContraints];
+    [self.view addConstraints:verticalContraints];
+}
+
 - (void)setItem:(BNRItem *)item
 {
     _item = item;

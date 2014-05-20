@@ -7,7 +7,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BNRDetaiViewController">
             <connections>
                 <outlet property="dateLabel" destination="3ng-MN-lpI" id="b05-pQ-5fD"/>
-                <outlet property="imageView" destination="LSB-oX-KJc" id="H12-p2-MpI"/>
                 <outlet property="nameField" destination="T8z-L1-UsF" id="MvP-Q5-r7C"/>
                 <outlet property="serialNumberField" destination="N0k-IC-GYf" id="81V-xu-Swi"/>
                 <outlet property="toolbar" destination="R5g-WM-DDz" id="0cl-zY-fzn"/>
@@ -98,10 +97,6 @@
                         <action selector="clickChangeDate:" destination="-1" eventType="touchUpInside" id="LyM-ZQ-y0h"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSB-oX-KJc">
-                    <rect key="frame" x="0.0" y="337" width="320" height="182"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5g-WM-DDz">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
