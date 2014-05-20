@@ -21,6 +21,9 @@
     return self;
 }
 
+/**
+ *  Add a big red X to the camera view
+ */
 - (void)drawRect:(CGRect)rect
 {
     UIBezierPath *path = [[UIBezierPath alloc] init];
