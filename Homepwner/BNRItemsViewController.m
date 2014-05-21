@@ -81,11 +81,16 @@
 {
     BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
     
-    NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
+    BNRDetaiViewController *detailViewController = [[BNRDetaiViewController alloc] initForNewItem:YES];
+    detailViewController.item = newItem;
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    detailViewController.dismissBlock = ^{
+        [self.tableView reloadData];
+    };
     
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -134,7 +139,7 @@
         NSArray *items = [[BNRItemStore sharedStore] allItems];
         BNRItem *selectItem = items[indexPath.row];
         
-        BNRDetaiViewController *detailViewController = [[BNRDetaiViewController alloc] init];
+        BNRDetaiViewController *detailViewController = [[BNRDetaiViewController alloc] initForNewItem:NO];
         detailViewController.item = selectItem;
         [self.navigationController pushViewController:detailViewController animated:YES];
     }

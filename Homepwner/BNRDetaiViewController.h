@@ -10,8 +10,12 @@
 
 @class BNRItem;
 
-@interface BNRDetaiViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
+@interface BNRDetaiViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) BNRItem *item;
+@property (nonatomic, copy) void(^dismissBlock)(void);
+
+
+- (instancetype)initForNewItem:(BOOL)isNew;
 
 @end

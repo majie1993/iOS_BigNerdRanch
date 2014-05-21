@@ -11,6 +11,7 @@
 #import "BNRItem.h"
 #import "BNRImageStore.h"
 #import "BNROverlayView.h"
+#import "BNRItemStore.h"
 
 @interface BNRDetaiViewController ()
 
@@ -20,9 +21,35 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property (strong, nonatomic) UIPopoverController *imagePickerPopover;
 @end
 
 @implementation BNRDetaiViewController
+
+- (instancetype)initForNewItem:(BOOL)isNew
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        if (isNew) {
+            UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                      target:self
+                                                                                      action:@selector(save:)];
+            self.navigationItem.rightBarButtonItem = doneItem;
+            UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                        target:self
+                                                                                        action:@selector(cancel:)];
+            self.navigationItem.leftBarButtonItem = cancelItem;
+        }
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    @throw [NSException exceptionWithName:@"Wrong Initializer" reason:@"User initForNewItem" userInfo:nil];
+    return nil;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -45,6 +72,9 @@
     NSString *imageKey = self.item.imageKey;
     UIImage *imageToDisplay = [[BNRImageStore sharedStore] imageForKey:imageKey];
     self.imageView.image = imageToDisplay;
+    
+    UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
+    [self prepareViewsForOrientation:io];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -73,7 +103,7 @@
     [self.view addSubview:iv];
     
     [self.imageView setContentHuggingPriority:200 forAxis:UILayoutConstraintAxisVertical];
-    [self.imageView setContentCompressionResistancePriority:700 forAxis:UILayoutConstraintAxisVertical]; 
+    [self.imageView setContentCompressionResistancePriority:700 forAxis:UILayoutConstraintAxisVertical];
     
     NSDictionary *nameMap = @{@"imageView": self.imageView,
                               @"toolbar": self.toolbar,
@@ -91,6 +121,28 @@
     
     [self.view addConstraints:horizontalContraints];
     [self.view addConstraints:verticalContraints];
+}
+
+- (void)prepareViewsForOrientation: (UIInterfaceOrientation)orientation
+{
+    // Is it a iPad
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        return;
+    }
+    
+    // Is it landscape
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        self.imageView.hidden = YES;
+        self.cameraButton.enabled = NO;
+    } else {
+        self.imageView.hidden = NO;
+        self.cameraButton.enabled = YES;
+    }
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self prepareViewsForOrientation:toInterfaceOrientation];
 }
 
 - (void)setItem:(BNRItem *)item
@@ -114,6 +166,13 @@
 
 - (IBAction)takePicture:(id)sender
 {
+    // looks like in iOS7.1, we don't need these codes to protect crashing from double tapping camera button
+    if ([self.imagePickerPopover isPopoverVisible]) {
+        [self.imagePickerPopover dismissPopoverAnimated:YES];
+        self.imagePickerPopover = nil;
+        return;
+    }
+    
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
     UIView *overlayView = [[BNROverlayView alloc] initWithFrame:imagePicker.view.frame];
@@ -126,7 +185,26 @@
     }
     imagePicker.allowsEditing = YES;
     imagePicker.delegate = self;
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    //[self presentViewController:imagePicker animated:YES completion:nil];
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        self.imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+        
+        //!!!: 需要为popoverViewController 添加背景
+        //UIImage *image = [UIImage imageNamed:@"background"];
+        
+        [self.imagePickerPopover presentPopoverFromBarButtonItem:sender
+                                        permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                        animated:YES];
+    } else {
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    NSLog(@"User dismissed popover");
+    self.imagePickerPopover = nil;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -137,7 +215,12 @@
     
     self.imageView.image = image;
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    // do i have a popover
+    if (self.imagePickerPopover) {
+        [self.imagePickerPopover dismissPopoverAnimated:YES];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -156,6 +239,18 @@
     self.imageView.image = nil;
     NSString *imageKey = self.item.imageKey;
     [[BNRImageStore sharedStore] deleteImageForKey:imageKey];
+}
+
+
+- (void)save:(id)sender
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
+}
+
+- (void)cancel:(id)sender
+{
+    [[BNRItemStore sharedStore] removeItem:self.item];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
 }
 
 @end
