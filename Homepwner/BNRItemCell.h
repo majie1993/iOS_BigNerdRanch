@@ -17,4 +17,6 @@
 
 @property (nonatomic, copy) void (^actionBlcok)(void);
 
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *imageViewHeightContraint;
+
 @end
