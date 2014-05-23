@@ -211,6 +211,8 @@
 {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     
+    [self.item setThumbnailFromImage:image];
+    
     [[BNRImageStore sharedStore] setImage:image forKey:self.item.imageKey];
     
     self.imageView.image = image;

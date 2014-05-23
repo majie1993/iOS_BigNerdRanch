@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95726AAA192CD7C800813A78 /* BNRItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95726AA9192CD7C800813A78 /* BNRItemCell.m */; };
+		95726AAC192CD86F00813A78 /* BNRItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95726AAB192CD86F00813A78 /* BNRItemCell.xib */; };
 		95772171192784FE002270C5 /* BNROverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95772170192784FE002270C5 /* BNROverlayView.m */; };
+		957C987C192F1EAC00319A55 /* BNRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957C987B192F1EAC00319A55 /* BNRImageViewController.m */; };
 		95C213F01921D0FE00076A71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C213EF1921D0FE00076A71 /* Foundation.framework */; };
 		95C213F21921D0FE00076A71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C213F11921D0FE00076A71 /* CoreGraphics.framework */; };
 		95C213F41921D0FE00076A71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C213F31921D0FE00076A71 /* UIKit.framework */; };
@@ -41,8 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		95726AA8192CD7C800813A78 /* BNRItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemCell.h; sourceTree = "<group>"; };
+		95726AA9192CD7C800813A78 /* BNRItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemCell.m; sourceTree = "<group>"; };
+		95726AAB192CD86F00813A78 /* BNRItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRItemCell.xib; sourceTree = "<group>"; };
 		9577216F192784FE002270C5 /* BNROverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNROverlayView.h; sourceTree = "<group>"; };
 		95772170192784FE002270C5 /* BNROverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNROverlayView.m; sourceTree = "<group>"; };
+		957C987A192F1EAC00319A55 /* BNRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageViewController.h; sourceTree = "<group>"; };
+		957C987B192F1EAC00319A55 /* BNRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageViewController.m; sourceTree = "<group>"; };
 		95C213EC1921D0FE00076A71 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C213EF1921D0FE00076A71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95C213F11921D0FE00076A71 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,6 +126,11 @@
 				95C2142E1923003B00076A71 /* BNRDateViewController.h */,
 				95C2142F1923003B00076A71 /* BNRDateViewController.m */,
 				95C214301923003B00076A71 /* BNRDateViewController.xib */,
+				95726AA8192CD7C800813A78 /* BNRItemCell.h */,
+				95726AA9192CD7C800813A78 /* BNRItemCell.m */,
+				95726AAB192CD86F00813A78 /* BNRItemCell.xib */,
+				957C987A192F1EAC00319A55 /* BNRImageViewController.h */,
+				957C987B192F1EAC00319A55 /* BNRImageViewController.m */,
 				95C213F51921D0FE00076A71 /* Homepwner */,
 				95C2140E1921D0FE00076A71 /* HomepwnerTests */,
 				95C213EE1921D0FE00076A71 /* Frameworks */,
@@ -265,6 +278,7 @@
 				95C214321923003B00076A71 /* BNRDateViewController.xib in Resources */,
 				95C214021921D0FE00076A71 /* Images.xcassets in Resources */,
 				95C2142D1922F6DC00076A71 /* BNRDetaiViewController.xib in Resources */,
+				95726AAC192CD86F00813A78 /* BNRItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +302,8 @@
 				95772171192784FE002270C5 /* BNROverlayView.m in Sources */,
 				95C2142C1922F6DC00076A71 /* BNRDetaiViewController.m in Sources */,
 				95C214201921D19800076A71 /* BNRItemsViewController.m in Sources */,
+				957C987C192F1EAC00319A55 /* BNRImageViewController.m in Sources */,
+				95726AAA192CD7C800813A78 /* BNRItemCell.m in Sources */,
 				95C214351923A36500076A71 /* BNRImageStore.m in Sources */,
 				95C214231921D28A00076A71 /* BNRItem.m in Sources */,
 				95C213FC1921D0FE00076A71 /* main.m in Sources */,

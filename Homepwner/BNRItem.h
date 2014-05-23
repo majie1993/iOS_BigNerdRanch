@@ -14,8 +14,10 @@
 @property (nonatomic, copy) NSString *serialNumber;
 @property (nonatomic) int valueInDollars;
 @property (nonatomic, copy) NSDate *dateCreated;
-
 @property (nonatomic, copy) NSString *imageKey;
+@property (nonatomic, strong) UIImage *thumbnail;
+
+- (void)setThumbnailFromImage:(UIImage *)image;
 
 + (instancetype)randomItem;
 

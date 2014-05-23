@@ -8,5 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BNRItemsViewController : UITableViewController
+@interface BNRItemsViewController : UITableViewController<UIPopoverControllerDelegate>
+
+@property (nonatomic, strong) UIPopoverController *imagePopover;
+
 @end

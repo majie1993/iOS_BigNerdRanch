@@ -10,6 +10,9 @@
 #import "BNRItem.h"
 #import "BNRItemStore.h"
 #import "BNRDetaiViewController.h"
+#import "BNRItemCell.h"
+#import "BNRImageViewController.h"
+#import "BNRImageStore.h"
 
 @interface BNRItemsViewController()
 
@@ -41,7 +44,8 @@
 {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    UINib *nib = [UINib nibWithNibName:@"BNRItemCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRItemCell"];
     
 }
 
@@ -54,20 +58,51 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[BNRItemStore sharedStore] allItems] count] + 1;
+    return [[[BNRItemStore sharedStore] allItems] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    BNRItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BNRItemCell" forIndexPath:indexPath];
     
     NSArray *items = [[BNRItemStore sharedStore] allItems];
-    if (indexPath.row == [[[BNRItemStore sharedStore] allItems] count]) {
-        cell.textLabel.text = @"No more items!";
+    
+    BNRItem *item = items[indexPath.row];
+    cell.nameLabel.text = item.itemName;
+    cell.serialNumberLabel.text = item.serialNumber;
+    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+    if (item.valueInDollars < 50) {
+        cell.valueLabel.backgroundColor = [UIColor greenColor];
     } else {
-        BNRItem *item = items[indexPath.row];
-        cell.textLabel.text = item.description;
+        cell.valueLabel.backgroundColor = [UIColor redColor];
     }
+    cell.thumbnailView.image = item.thumbnail;
+    
+    __weak BNRItemCell *weakCell = cell;
+    cell.actionBlcok = ^{
+        NSLog(@"Going to show image for %@", item);
+        
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            NSString *itemKey = item.imageKey;
+            UIImage *img = [[BNRImageStore sharedStore] imageForKey:itemKey];
+            if (!img) {
+                return;
+            }
+            BNRItemCell *strongCell = weakCell;
+            
+            CGRect rect = [self.view convertRect:strongCell.thumbnailView.bounds
+                                          fromView:strongCell.thumbnailView];
+            BNRImageViewController *ivc = [[BNRImageViewController alloc] init];
+            ivc.image = img;
+            
+            self.imagePopover = [[UIPopoverController alloc] initWithContentViewController:ivc];
+            self.imagePopover.popoverContentSize = CGSizeMake(600, 600);
+            [self.imagePopover presentPopoverFromRect:rect
+                                               inView:self.view
+                             permittedArrowDirections:UIPopoverArrowDirectionAny
+                                             animated:YES];
+        }
+    };
     
     return cell;
 }
@@ -135,14 +170,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row != [[BNRItemStore sharedStore] allItems].count) {
-        NSArray *items = [[BNRItemStore sharedStore] allItems];
-        BNRItem *selectItem = items[indexPath.row];
-        
-        BNRDetaiViewController *detailViewController = [[BNRDetaiViewController alloc] initForNewItem:NO];
-        detailViewController.item = selectItem;
-        [self.navigationController pushViewController:detailViewController animated:YES];
-    }
+    NSArray *items = [[BNRItemStore sharedStore] allItems];
+    BNRItem *selectItem = items[indexPath.row];
+    
+    BNRDetaiViewController *detailViewController = [[BNRDetaiViewController alloc] initForNewItem:NO];
+    detailViewController.item = selectItem;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.imagePopover = nil;
 }
 
 
