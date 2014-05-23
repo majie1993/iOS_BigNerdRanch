@@ -209,7 +209,7 @@
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePicker.cameraOverlayView = overlayView;
+        //imagePicker.cameraOverlayView = overlayView;
     } else {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }

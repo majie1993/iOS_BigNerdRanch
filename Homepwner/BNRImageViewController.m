@@ -44,7 +44,7 @@
     
     UIScrollView *scrollView = (UIScrollView *)self.view;
     
-    scrollView.contentSize = CGSizeMake(w, h);
+    scrollView.contentSize = CGSizeMake(w*2, h*2);
     
     scrollView.pagingEnabled = NO;
     scrollView.maximumZoomScale = 2.0;

@@ -42,14 +42,14 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0v-sH-wlA">
-                        <rect key="frame" x="35" y="-59" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0z-d2-wLO">
+                        <rect key="frame" x="0.0" y="2" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <action selector="showImage:" destination="ZNB-D6-YGf" eventType="touchUpInside" id="ttw-EX-Krt"/>
+                            <action selector="showImage:" destination="ZNB-D6-YGf" eventType="touchUpInside" id="9ff-yN-FVq"/>
                         </connections>
                     </button>
                 </subviews>
@@ -58,12 +58,16 @@
                     <constraint firstItem="krX-Ka-ApC" firstAttribute="leading" secondItem="TrW-uX-ZTT" secondAttribute="trailing" constant="8" id="Dh7-ka-o6z"/>
                     <constraint firstItem="krX-Ka-ApC" firstAttribute="leading" secondItem="wYF-xK-prG" secondAttribute="leading" id="IDT-pR-TIf"/>
                     <constraint firstItem="krX-Ka-ApC" firstAttribute="top" secondItem="Lbr-Jz-Q9A" secondAttribute="top" constant="1" id="V2b-D9-XsK"/>
+                    <constraint firstItem="TrW-uX-ZTT" firstAttribute="leading" secondItem="V0z-d2-wLO" secondAttribute="leading" id="W88-uf-c2k"/>
+                    <constraint firstItem="TrW-uX-ZTT" firstAttribute="top" secondItem="V0z-d2-wLO" secondAttribute="top" id="XdC-ol-Rgl"/>
                     <constraint firstItem="qAP-ch-bHc" firstAttribute="leading" secondItem="wYF-xK-prG" secondAttribute="trailing" constant="8" id="cNO-PY-RWn"/>
                     <constraint firstAttribute="bottom" secondItem="wYF-xK-prG" secondAttribute="bottom" constant="1" id="gLf-ri-eay"/>
                     <constraint firstItem="TrW-uX-ZTT" firstAttribute="leading" secondItem="Lbr-Jz-Q9A" secondAttribute="leading" id="gfK-2A-GS3"/>
                     <constraint firstAttribute="trailing" secondItem="qAP-ch-bHc" secondAttribute="trailing" constant="22" id="oeg-j2-gmJ"/>
                     <constraint firstAttribute="centerY" secondItem="qAP-ch-bHc" secondAttribute="centerY" id="pMf-Ml-3RU"/>
                     <constraint firstAttribute="centerY" secondItem="TrW-uX-ZTT" secondAttribute="centerY" id="rlR-Q5-j4H"/>
+                    <constraint firstItem="TrW-uX-ZTT" firstAttribute="trailing" secondItem="V0z-d2-wLO" secondAttribute="trailing" id="u5F-Gn-SPX"/>
+                    <constraint firstItem="TrW-uX-ZTT" firstAttribute="bottom" secondItem="V0z-d2-wLO" secondAttribute="bottom" id="yXX-gU-ezk"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
