@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		952C258D193073A60031CA2D /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 952C258B193073A60031CA2D /* Homepwner.xcdatamodeld */; };
+		952C2590193075240031CA2D /* BNRImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 952C258F193075240031CA2D /* BNRImageTransformer.m */; };
+		952C2593193078E00031CA2D /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 952C2592193078E00031CA2D /* BNRItem.m */; };
+		952C259619308AC80031CA2D /* BNRAssetTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952C259519308AC80031CA2D /* BNRAssetTypeViewController.m */; };
 		95726AAA192CD7C800813A78 /* BNRItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95726AA9192CD7C800813A78 /* BNRItemCell.m */; };
 		95726AAC192CD86F00813A78 /* BNRItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95726AAB192CD86F00813A78 /* BNRItemCell.xib */; };
 		95772171192784FE002270C5 /* BNROverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95772170192784FE002270C5 /* BNROverlayView.m */; };
@@ -24,7 +28,6 @@
 		95C214131921D0FE00076A71 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95C214111921D0FE00076A71 /* InfoPlist.strings */; };
 		95C214151921D0FE00076A71 /* HomepwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C214141921D0FE00076A71 /* HomepwnerTests.m */; };
 		95C214201921D19800076A71 /* BNRItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2141F1921D19800076A71 /* BNRItemsViewController.m */; };
-		95C214231921D28A00076A71 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C214221921D28A00076A71 /* BNRItem.m */; };
 		95C214261921D31100076A71 /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C214251921D31100076A71 /* BNRItemStore.m */; };
 		95C2142C1922F6DC00076A71 /* BNRDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C2142A1922F6DC00076A71 /* BNRDetaiViewController.m */; };
 		95C2142D1922F6DC00076A71 /* BNRDetaiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C2142B1922F6DC00076A71 /* BNRDetaiViewController.xib */; };
@@ -44,6 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		952C258C193073A60031CA2D /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
+		952C258E193075240031CA2D /* BNRImageTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageTransformer.h; sourceTree = "<group>"; };
+		952C258F193075240031CA2D /* BNRImageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageTransformer.m; sourceTree = "<group>"; };
+		952C2591193078E00031CA2D /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
+		952C2592193078E00031CA2D /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
+		952C259419308AC80031CA2D /* BNRAssetTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRAssetTypeViewController.h; sourceTree = "<group>"; };
+		952C259519308AC80031CA2D /* BNRAssetTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRAssetTypeViewController.m; sourceTree = "<group>"; };
 		95726AA8192CD7C800813A78 /* BNRItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemCell.h; sourceTree = "<group>"; };
 		95726AA9192CD7C800813A78 /* BNRItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemCell.m; sourceTree = "<group>"; };
 		95726AAB192CD86F00813A78 /* BNRItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRItemCell.xib; sourceTree = "<group>"; };
@@ -69,8 +79,6 @@
 		95C214141921D0FE00076A71 /* HomepwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomepwnerTests.m; sourceTree = "<group>"; };
 		95C2141E1921D19800076A71 /* BNRItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemsViewController.h; sourceTree = "<group>"; };
 		95C2141F1921D19800076A71 /* BNRItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemsViewController.m; sourceTree = "<group>"; };
-		95C214211921D28A00076A71 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
-		95C214221921D28A00076A71 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		95C214241921D31100076A71 /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
 		95C214251921D31100076A71 /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
 		95C214291922F6DC00076A71 /* BNRDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetaiViewController.h; sourceTree = "<group>"; };
@@ -110,17 +118,22 @@
 		95C213E31921D0FE00076A71 = {
 			isa = PBXGroup;
 			children = (
-				95C214211921D28A00076A71 /* BNRItem.h */,
-				95C214221921D28A00076A71 /* BNRItem.m */,
+				952C2591193078E00031CA2D /* BNRItem.h */,
+				952C2592193078E00031CA2D /* BNRItem.m */,
+				952C258B193073A60031CA2D /* Homepwner.xcdatamodeld */,
 				95C214241921D31100076A71 /* BNRItemStore.h */,
 				95C214251921D31100076A71 /* BNRItemStore.m */,
 				95C214331923A36500076A71 /* BNRImageStore.h */,
 				95C214341923A36500076A71 /* BNRImageStore.m */,
+				952C258E193075240031CA2D /* BNRImageTransformer.h */,
+				952C258F193075240031CA2D /* BNRImageTransformer.m */,
 				95C2141E1921D19800076A71 /* BNRItemsViewController.h */,
 				95C2141F1921D19800076A71 /* BNRItemsViewController.m */,
 				95C214291922F6DC00076A71 /* BNRDetaiViewController.h */,
 				95C2142A1922F6DC00076A71 /* BNRDetaiViewController.m */,
 				95C2142B1922F6DC00076A71 /* BNRDetaiViewController.xib */,
+				952C259419308AC80031CA2D /* BNRAssetTypeViewController.h */,
+				952C259519308AC80031CA2D /* BNRAssetTypeViewController.m */,
 				9577216F192784FE002270C5 /* BNROverlayView.h */,
 				95772170192784FE002270C5 /* BNROverlayView.m */,
 				95C2142E1923003B00076A71 /* BNRDateViewController.h */,
@@ -301,11 +314,14 @@
 				95C214261921D31100076A71 /* BNRItemStore.m in Sources */,
 				95772171192784FE002270C5 /* BNROverlayView.m in Sources */,
 				95C2142C1922F6DC00076A71 /* BNRDetaiViewController.m in Sources */,
+				952C2593193078E00031CA2D /* BNRItem.m in Sources */,
+				952C2590193075240031CA2D /* BNRImageTransformer.m in Sources */,
+				952C259619308AC80031CA2D /* BNRAssetTypeViewController.m in Sources */,
 				95C214201921D19800076A71 /* BNRItemsViewController.m in Sources */,
 				957C987C192F1EAC00319A55 /* BNRImageViewController.m in Sources */,
 				95726AAA192CD7C800813A78 /* BNRItemCell.m in Sources */,
+				952C258D193073A60031CA2D /* Homepwner.xcdatamodeld in Sources */,
 				95C214351923A36500076A71 /* BNRImageStore.m in Sources */,
-				95C214231921D28A00076A71 /* BNRItem.m in Sources */,
 				95C213FC1921D0FE00076A71 /* main.m in Sources */,
 				95C214001921D0FE00076A71 /* BNRAppDelegate.m in Sources */,
 			);
@@ -520,6 +536,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		952C258B193073A60031CA2D /* Homepwner.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				952C258C193073A60031CA2D /* Homepwner.xcdatamodel */,
+			);
+			currentVersion = 952C258C193073A60031CA2D /* Homepwner.xcdatamodel */;
+			path = Homepwner.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 95C213E41921D0FE00076A71 /* Project object */;
 }

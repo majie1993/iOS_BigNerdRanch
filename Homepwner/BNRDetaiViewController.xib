@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BNRDetaiViewController">
             <connections>
+                <outlet property="assetTypeButton" destination="DHB-Dd-InL" id="css-Tb-bWi"/>
                 <outlet property="cameraButton" destination="24s-4h-k1v" id="Giw-G6-25b"/>
                 <outlet property="dateLabel" destination="3ng-MN-lpI" id="b05-pQ-5fD"/>
                 <outlet property="nameField" destination="T8z-L1-UsF" id="MvP-Q5-r7C"/>
@@ -78,14 +79,6 @@
                         <outlet property="delegate" destination="-1" id="asH-3W-fsG"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWS-Ah-1eu">
-                    <rect key="frame" x="20" y="299" width="90" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Change Date"/>
-                    <connections>
-                        <action selector="clickChangeDate:" destination="-1" eventType="touchUpInside" id="LyM-ZQ-y0h"/>
-                    </connections>
-                </button>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5g-WM-DDz">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -98,18 +91,13 @@
                                 <action selector="takePicture:" destination="-1" id="FCL-Uv-BUc"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="Item" id="DHB-Dd-InL">
+                            <connections>
+                                <action selector="showAssetTypePicker:" destination="-1" id="BFe-Ut-ZLO"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oM5-ni-QTN">
-                    <rect key="frame" x="217" y="299" width="83" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Clear Image">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clearImage:" destination="-1" eventType="touchUpInside" id="4da-Cx-Z0y"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

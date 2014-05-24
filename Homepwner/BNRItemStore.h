@@ -21,4 +21,6 @@
 
 - (BOOL)saveChanges;
 
+- (NSArray *)allAssetTypes;
+
 @end

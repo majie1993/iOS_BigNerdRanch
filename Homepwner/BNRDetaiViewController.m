@@ -12,6 +12,7 @@
 #import "BNRImageStore.h"
 #import "BNROverlayView.h"
 #import "BNRItemStore.h"
+#import "BNRAssetTypeViewController.h"
 
 @interface BNRDetaiViewController ()
 
@@ -27,6 +28,9 @@
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *serialNumberLabel;
 @property (nonatomic, weak) IBOutlet UILabel *valueLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *assetTypeButton;
+
+@property (nonatomic, strong) UIPopoverController *typePopover;
 
 @end
 
@@ -83,9 +87,20 @@
     
     self.dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
     
-    NSString *imageKey = self.item.imageKey;
-    UIImage *imageToDisplay = [[BNRImageStore sharedStore] imageForKey:imageKey];
-    self.imageView.image = imageToDisplay;
+    if (self.item.imageKey) {
+        NSString *imageKey = self.item.imageKey;
+        UIImage *imageToDisplay = [[BNRImageStore sharedStore] imageForKey:imageKey];
+        self.imageView.image = imageToDisplay;
+    } else {
+        self.imageView.image = nil;
+    }
+    
+    NSString *typeLabel = [self.item.assetType valueForKey:@"label"];
+    if (!typeLabel) {
+        typeLabel = @"None";
+    }
+    self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
+    [self updateFonts];
     
     UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
     [self prepareViewsForOrientation:io];
@@ -283,6 +298,26 @@
 {
     [[BNRItemStore sharedStore] removeItem:self.item];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
+}
+
+- (IBAction)showAssetTypePicker:(id)sender
+{
+    [self.view endEditing:YES];
+    
+    BNRAssetTypeViewController *avc = [[BNRAssetTypeViewController alloc] init];
+    avc.item = self.item;
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        self.typePopover = [[UIPopoverController alloc] initWithContentViewController:avc];
+        self.typePopover.popoverContentSize = CGSizeMake(600, 600);
+        avc.dismissBlock = ^{
+            [self.typePopover dismissPopoverAnimated:YES];
+        };
+        [self.typePopover presentPopoverFromBarButtonItem:self.assetTypeButton permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+        
+    } else {
+        [self.navigationController pushViewController:avc animated:YES];
+    }
 }
 
 @end
