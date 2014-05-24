@@ -15,16 +15,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    BNRItemsViewController *itemsViewController = [[BNRItemsViewController alloc] init];
+    // if state restoration did not occur, setup view controller hierarchy
+    if (!self.window.rootViewController) {
+        BNRItemsViewController *itemsViewController = [[BNRItemsViewController alloc] init];
+        
+        UINavigationController *navViewController = [[UINavigationController alloc] initWithRootViewController:itemsViewController];
+        
+        // give the navigation controller a restoration identifier that is the same as the class
+        navViewController.restorationIdentifier = NSStringFromClass([navViewController class]);
+        
+        self.window.rootViewController = navViewController;
+    }
     
-    UINavigationController *navViewController = [[UINavigationController alloc] initWithRootViewController:itemsViewController];
-    
-    self.window.rootViewController = navViewController;
-    
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
     return YES;
 }
 
@@ -64,4 +76,40 @@
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
+- (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
+{
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder
+{
+    return YES;
+}
+
+- (UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
+{
+    UIViewController *vc = [[UINavigationController alloc] init];
+    vc.restorationIdentifier = [identifierComponents lastObject];
+    
+    // == 1 means it is a root view controller
+    if (identifierComponents.count == 1) {
+        self.window.rootViewController = vc;
+    }
+    return vc;
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

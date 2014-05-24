@@ -40,6 +40,10 @@
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
+
+        
         if (isNew) {
             UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                       target:self
@@ -317,6 +321,38 @@
         
     } else {
         [self.navigationController pushViewController:avc animated:YES];
+    }
+}
+
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
+{
+    BOOL isNew = NO;
+    if ([identifierComponents count] == 3) {
+        isNew = YES;
+    }
+    return [[self alloc] initForNewItem:isNew];
+}
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    [coder encodeObject:self.item.imageKey forKey:@"item.imageKey"];
+    self.item.itemName = self.nameField.text;
+    self.item.serialNumber = self.serialNumberField.text;
+    self.item.valueInDollars = [self.valueField.text intValue];
+    
+    [[BNRItemStore sharedStore] saveChanges];
+    
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    NSString *imageKey = [coder decodeObjectForKey:@"item.imageKey"];
+    for (BNRItem *item in [[BNRItemStore sharedStore] allItems]) {
+        if ([imageKey isEqualToString:item.imageKey]) {
+            self.item = item;
+            break;
+        }
     }
 }
 

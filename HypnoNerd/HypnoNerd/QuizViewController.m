@@ -36,6 +36,9 @@
         
         self.tabBarItem.image = [UIImage imageNamed:@"Icon.png"];
         self.tabBarItem.title = @"Quiz";
+        
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
     }
     return self;
 }

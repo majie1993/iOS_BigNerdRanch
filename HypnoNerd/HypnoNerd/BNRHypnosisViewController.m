@@ -37,6 +37,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
+        
         self.tabBarItem.title = @"Hypnotize";
         UIImage *image = [UIImage imageNamed:@"Hypno.png"];
         self.tabBarItem.image = image;

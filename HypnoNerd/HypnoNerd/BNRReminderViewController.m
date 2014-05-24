@@ -21,6 +21,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
+        
         UITabBarItem *tbi = self.tabBarItem;
         tbi.title = @"Reminder";
         tbi.image = [UIImage imageNamed:@"Time.png"];
