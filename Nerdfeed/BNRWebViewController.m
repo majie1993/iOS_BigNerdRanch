@@ -8,7 +8,7 @@
 
 #import "BNRWebViewController.h"
 
-@interface BNRWebViewController() <UIWebViewDelegate>
+@interface BNRWebViewController() <UIWebViewDelegate, UISplitViewControllerDelegate>
 
 @property (nonatomic, strong) UIBarButtonItem *goItem;
 @property (nonatomic, strong) UIBarButtonItem *backItem;
@@ -67,6 +67,21 @@
         self.goItem.enabled = YES;
     }
 
+}
+
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+{
+    barButtonItem.title = @"Courses";
+    
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    // remove bar button
+    if (barButtonItem == self.navigationItem.leftBarButtonItem) {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
 }
 
 @end
