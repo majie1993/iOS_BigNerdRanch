@@ -1,0 +1,15 @@
+
+/* Class = "IBUILabel"; text = "Value"; ObjectID = "3ng-MN-lpI"; */
+"3ng-MN-lpI.text" = "价格";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "5yP-Wl-CMr"; */
+"5yP-Wl-CMr.text" = "名称";
+
+/* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "DHB-Dd-InL"; */
+"DHB-Dd-InL.title" = "项目";
+
+/* Class = "IBUILabel"; text = "Value"; ObjectID = "mGd-ZB-1tD"; */
+"mGd-ZB-1tD.text" = "Value";
+
+/* Class = "IBUILabel"; text = "Serial"; ObjectID = "x2y-nc-Ykf"; */
+"x2y-nc-Ykf.text" = "序列号";

@@ -26,7 +26,7 @@
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         UINavigationItem *navItem = self.navigationItem;
-        navItem.title = @"Homepwner";
+        navItem.title = NSLocalizedString(@"Homepwner", @"Name of application");
         
         self.restorationIdentifier = NSStringFromClass([self class]);
         self.restorationClass = [self class];
@@ -37,6 +37,8 @@
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(updateTableViewForDynamicTypeSize) name:UIContentSizeCategoryDidChangeNotification object:nil];
+        
+        [nc addObserver:self selector:@selector(localeChanged:) name:NSCurrentLocaleDidChangeNotification object:nil];
     }
     return self;
 }
@@ -100,12 +102,19 @@
 {
     BNRItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BNRItemCell" forIndexPath:indexPath];
     
+    static NSNumberFormatter *currencyFormatter = nil;
+    
+    if (!currencyFormatter) {
+        currencyFormatter = [[NSNumberFormatter alloc] init];
+        currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    }
+    
     NSArray *items = [[BNRItemStore sharedStore] allItems];
     
     BNRItem *item = items[indexPath.row];
     cell.nameLabel.text = item.itemName;
     cell.serialNumberLabel.text = item.serialNumber;
-    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+    cell.valueLabel.text = [currencyFormatter stringFromNumber:@(item.valueInDollars)];
     if (item.valueInDollars < 50) {
         cell.valueLabel.backgroundColor = [UIColor greenColor];
     } else {
@@ -264,6 +273,11 @@
         }
     }
     return indexPath;
+}
+
+- (void)localeChanged: (NSNotification *)note
+{
+    [self.tableView reloadData];
 }
 
 @end

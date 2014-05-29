@@ -101,9 +101,9 @@
     
     NSString *typeLabel = [self.item.assetType valueForKey:@"label"];
     if (!typeLabel) {
-        typeLabel = @"None";
+        typeLabel = NSLocalizedString(@"None", @"Typelabel None");
     }
-    self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
+    self.assetTypeButton.title = [NSString stringWithFormat:NSLocalizedString(@"Type: %@", @"Asset type button"), typeLabel];
     [self updateFonts];
     
     UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
