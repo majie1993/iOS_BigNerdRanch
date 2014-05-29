@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const BNRNextItemValuePrefsKey;
+extern NSString *const BNRNextItemNamePrefsKey;
+
 @interface BNRAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

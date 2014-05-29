@@ -17,6 +17,7 @@
 		95772171192784FE002270C5 /* BNROverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95772170192784FE002270C5 /* BNROverlayView.m */; };
 		957C987C192F1EAC00319A55 /* BNRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957C987B192F1EAC00319A55 /* BNRImageViewController.m */; };
 		95C09A84193758F000586380 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95C09A86193758F000586380 /* Localizable.strings */; };
+		95C09A8919375EAA00586380 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95C09A8819375EAA00586380 /* Settings.bundle */; };
 		95C213F01921D0FE00076A71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C213EF1921D0FE00076A71 /* Foundation.framework */; };
 		95C213F21921D0FE00076A71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C213F11921D0FE00076A71 /* CoreGraphics.framework */; };
 		95C213F41921D0FE00076A71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C213F31921D0FE00076A71 /* UIKit.framework */; };
@@ -66,6 +67,7 @@
 		957C987B192F1EAC00319A55 /* BNRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageViewController.m; sourceTree = "<group>"; };
 		95C09A85193758F000586380 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		95C09A871937590800586380 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		95C09A8819375EAA00586380 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		95C213EC1921D0FE00076A71 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C213EF1921D0FE00076A71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95C213F11921D0FE00076A71 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +124,7 @@
 		95C213E31921D0FE00076A71 = {
 			isa = PBXGroup;
 			children = (
+				95C09A8819375EAA00586380 /* Settings.bundle */,
 				95C09A86193758F000586380 /* Localizable.strings */,
 				952C2591193078E00031CA2D /* BNRItem.h */,
 				952C2592193078E00031CA2D /* BNRItem.m */,
@@ -299,6 +302,7 @@
 				95C214021921D0FE00076A71 /* Images.xcassets in Resources */,
 				953A8BE5193752E100D44301 /* BNRDetaiViewController.xib in Resources */,
 				95726AAC192CD86F00813A78 /* BNRItemCell.xib in Resources */,
+				95C09A8919375EAA00586380 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "BNRItemStore.h"
 #import "BNRItem.h"
 #import "BNRImageStore.h"
+#import "BNRAppDelegate.h"
 
 @import CoreData;
 
@@ -99,6 +100,12 @@
                                                   inManagedObjectContext:self.context];
     
     item.orderingValue = order;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    item.valueInDollars = [[defaults objectForKey:BNRNextItemValuePrefsKey] intValue];
+    item.itemName = [defaults objectForKey:BNRNextItemNamePrefsKey];
+    NSLog(@"default: %@", [defaults dictionaryRepresentation]);
+    
     [self.privateItems addObject:item];
     
     return item;
